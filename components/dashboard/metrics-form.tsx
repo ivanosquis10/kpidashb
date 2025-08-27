@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import {
   Activity,
   AlertTriangle,
@@ -12,15 +13,28 @@ import {
   Shield,
   Target,
   Users,
+  Save,
+  Database,
 } from "lucide-react"
 import { TaskData } from "@/lib/types"
 
 interface MetricsFormProps {
   taskData: TaskData
   onInputChange: (field: keyof TaskData, value: string) => void
+  onSaveData: (name: string) => boolean
+  onShowSavedData: () => void
+  hasDataToSave: boolean
+  savedDataCount: number
 }
 
-export function MetricsForm({ taskData, onInputChange }: MetricsFormProps) {
+export function MetricsForm({
+  taskData,
+  onInputChange,
+  onSaveData,
+  onShowSavedData,
+  hasDataToSave,
+  savedDataCount,
+}: MetricsFormProps) {
   return (
     <Card
       className={`shadow-sm backdrop-blur-sm transition-colors duration-300`}
@@ -40,13 +54,37 @@ export function MetricsForm({ taskData, onInputChange }: MetricsFormProps) {
               </p>
             </div>
           </div>
-          <Badge
-            variant="secondary"
-            className={`transition-colors duration-300 `}
-          >
-            <Users className="h-3 w-3 mr-1" />
-            Equipo activo
-          </Badge>
+          <div className="flex items-center gap-2">
+            <Badge
+              variant="secondary"
+              className={`transition-colors duration-300 `}
+            >
+              <Users className="h-3 w-3 mr-1" />
+              Equipo activo
+            </Badge>
+
+            {hasDataToSave && (
+              <Button size="sm" onClick={() => onSaveData("")} className="h-8">
+                <Save className="h-3 w-3 mr-1" />
+                Guardar
+              </Button>
+            )}
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onShowSavedData}
+              className="h-8"
+            >
+              <Database className="h-3 w-3 mr-1" />
+              Datos Guardados
+              {savedDataCount > 0 && (
+                <Badge variant="secondary" className="ml-1 h-5 w-5 p-0 text-xs">
+                  {savedDataCount}
+                </Badge>
+              )}
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent>

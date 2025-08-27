@@ -6,6 +6,14 @@ export interface TaskData {
   sastIteration: string
 }
 
+export interface SavedData {
+  id: string
+  name: string
+  data: TaskData
+  createdAt: string
+  updatedAt: string
+}
+
 export interface ChartData {
   name: string
   value: number
