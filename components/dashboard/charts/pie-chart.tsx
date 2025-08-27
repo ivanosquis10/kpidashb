@@ -12,24 +12,17 @@ import {
 import { ChartData } from "@/lib/types"
 
 interface PieChartProps {
-  darkMode: boolean
   data: ChartData[]
 }
 
-export function PieChart({ darkMode, data }: PieChartProps) {
+export function PieChart({ data }: PieChartProps) {
   return (
     <Card
-      className={`shadow-sm backdrop-blur-sm transition-colors duration-300 ${
-        darkMode
-          ? "border-slate-700/60 bg-slate-800/60"
-          : "border-slate-200/60 bg-white/60"
-      }`}
+      className={`shadow-sm backdrop-blur-sm transition-colors duration-300`}
     >
       <CardHeader className="pb-4">
         <CardTitle
-          className={`flex items-center gap-2 text-lg font-semibold transition-colors duration-300 ${
-            darkMode ? "text-slate-100" : "text-slate-900"
-          }`}
+          className={`flex items-center gap-2 text-lg font-semibold transition-colors duration-300`}
         >
           <PieChartIcon className="h-5 w-5 text-purple-600" />
           Proporción de Tareas
@@ -50,7 +43,7 @@ export function PieChart({ darkMode, data }: PieChartProps) {
               fill="#8884d8"
               dataKey="value"
               strokeWidth={2}
-              stroke={darkMode ? "#1f2937" : "#ffffff"}
+              stroke="#ffffff"
             >
               {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} />
@@ -58,11 +51,11 @@ export function PieChart({ darkMode, data }: PieChartProps) {
             </Pie>
             <Tooltip
               contentStyle={{
-                backgroundColor: darkMode ? "#1f2937" : "white",
-                border: `1px solid ${darkMode ? "#374151" : "#e2e8f0"}`,
+                backgroundColor: "white",
+                border: `1px solid #e2e8f0`,
                 borderRadius: "12px",
                 boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
-                color: darkMode ? "#f3f4f6" : "#1f2937",
+                color: "#1f2937",
               }}
             />
           </RechartsPieChart>

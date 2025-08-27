@@ -6,11 +6,10 @@ import { AreaChart } from "./area-chart"
 import { TaskData } from "@/lib/types"
 
 interface ChartsGridProps {
-  darkMode: boolean
   taskData: TaskData
 }
 
-export function ChartsGrid({ darkMode, taskData }: ChartsGridProps) {
+export function ChartsGrid({ taskData }: ChartsGridProps) {
   const chartData = [
     {
       name: "Por Hacer",
@@ -99,9 +98,9 @@ export function ChartsGrid({ darkMode, taskData }: ChartsGridProps) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <BarChart darkMode={darkMode} data={barChartData} />
-      <PieChart darkMode={darkMode} data={chartData} />
-      <AreaChart darkMode={darkMode} data={trendData} />
+      <BarChart data={barChartData} />
+      <PieChart data={chartData} />
+      <AreaChart data={trendData} />
     </div>
   )
 }

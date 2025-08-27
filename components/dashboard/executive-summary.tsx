@@ -16,14 +16,10 @@ import {
 import { TaskData } from "@/lib/types"
 
 interface ExecutiveSummaryProps {
-  darkMode: boolean
   taskData: TaskData
 }
 
-export function ExecutiveSummary({
-  darkMode,
-  taskData,
-}: ExecutiveSummaryProps) {
+export function ExecutiveSummary({ taskData }: ExecutiveSummaryProps) {
   const completionRate =
     taskData.totalTasks > 0
       ? ((taskData.completed / taskData.totalTasks) * 100).toFixed(1)
@@ -75,11 +71,7 @@ export function ExecutiveSummary({
 
   return (
     <Card
-      className={`shadow-sm transition-colors duration-300 ${
-        darkMode
-          ? "border-slate-700/60 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800"
-          : "border-slate-200/60 bg-gradient-to-r from-white via-slate-50 to-white"
-      }`}
+      className={`shadow-sm transition-colors duration-300 bg-gradient-to-r from-white via-slate-50 to-white dark:from-slate-800 dark:via-slate-700 dark:to-slate-800`}
     >
       <CardHeader className="pb-6">
         <div className="flex items-center justify-between">
@@ -89,28 +81,18 @@ export function ExecutiveSummary({
             </div>
             <div>
               <CardTitle
-                className={`text-xl font-semibold transition-colors duration-300 ${
-                  darkMode ? "text-slate-100" : "text-slate-900"
-                }`}
+                className={`text-xl font-semibold transition-colors duration-300`}
               >
                 Resumen Ejecutivo
               </CardTitle>
-              <p
-                className={`text-sm mt-1 transition-colors duration-300 ${
-                  darkMode ? "text-slate-400" : "text-slate-600"
-                }`}
-              >
+              <p className={`text-sm mt-1 transition-colors duration-300`}>
                 Análisis inteligente de rendimiento y productividad
               </p>
             </div>
           </div>
           <Badge
             variant="outline"
-            className={`transition-colors duration-300 ${
-              darkMode
-                ? "bg-emerald-900/50 text-emerald-300 border-emerald-700"
-                : "bg-emerald-50 text-emerald-700 border-emerald-200"
-            }`}
+            className={`transition-colors duration-300 bg-emerald-50 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-700`}
           >
             <Zap className="h-3 w-3 mr-1" />
             Insights automáticos
@@ -120,34 +102,22 @@ export function ExecutiveSummary({
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div
-            className={`text-center p-8 rounded-2xl border transition-colors duration-300 ${
-              darkMode
-                ? "bg-gradient-to-br from-slate-800 to-emerald-900/20 border-emerald-800/50"
-                : "bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-100"
-            }`}
+            className={`text-center p-8 rounded-2xl border transition-colors duration-300 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-800 dark:to-emerald-900/20 border-emerald-100 dark:border-emerald-800/50`}
           >
             <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center mx-auto mb-4">
               <TrendingUp className="h-8 w-8 text-white" />
             </div>
             <h3
-              className={`text-lg font-semibold mb-2 transition-colors duration-300 ${
-                darkMode ? "text-slate-100" : "text-slate-900"
-              }`}
+              className={`text-lg font-semibold mb-2 transition-colors duration-300`}
             >
               Productividad
             </h3>
             <p
-              className={`text-4xl font-bold mb-2 transition-colors duration-300 ${
-                darkMode ? "text-emerald-400" : "text-emerald-600"
-              }`}
+              className={`text-4xl font-bold mb-2 transition-colors duration-300 text-emerald-600 dark:text-emerald-400`}
             >
               {completionRate}%
             </p>
-            <p
-              className={`text-sm transition-colors duration-300 ${
-                darkMode ? "text-slate-400" : "text-slate-600"
-              }`}
-            >
+            <p className={`text-sm transition-colors duration-300`}>
               Tareas completadas del total
             </p>
             <Separator className="my-4" />
@@ -162,50 +132,32 @@ export function ExecutiveSummary({
           </div>
 
           <div
-            className={`text-center p-8 rounded-2xl border transition-colors duration-300 ${
-              darkMode
-                ? "bg-gradient-to-br from-slate-800 to-amber-900/20 border-amber-800/50"
-                : "bg-gradient-to-br from-amber-50 to-orange-50 border-amber-100"
-            }`}
+            className={`text-center p-8 rounded-2xl border transition-colors duration-300 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-slate-800 dark:to-amber-900/20 border-amber-100 dark:border-amber-800/50`}
           >
             <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center mx-auto mb-4">
               <Clock className="h-8 w-8 text-white" />
             </div>
             <h3
-              className={`text-lg font-semibold mb-2 transition-colors duration-300 ${
-                darkMode ? "text-slate-100" : "text-slate-900"
-              }`}
+              className={`text-lg font-semibold mb-2 transition-colors duration-300`}
             >
               Carga Activa
             </h3>
             <p
-              className={`text-4xl font-bold mb-2 transition-colors duration-300 ${
-                darkMode ? "text-amber-400" : "text-amber-600"
-              }`}
+              className={`text-4xl font-bold mb-2 transition-colors duration-300 text-amber-600 dark:text-amber-400`}
             >
               {taskData.inProgress}
             </p>
-            <p
-              className={`text-sm transition-colors duration-300 ${
-                darkMode ? "text-slate-400" : "text-slate-600"
-              }`}
-            >
+            <p className={`text-sm transition-colors duration-300`}>
               Tareas en progreso activo
             </p>
             <Separator className="my-4" />
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span
-                  className={`transition-colors duration-300 ${
-                    darkMode ? "text-slate-400" : "text-slate-600"
-                  }`}
-                >
+                <span className={`transition-colors duration-300`}>
                   Capacidad utilizada
                 </span>
                 <span
-                  className={`font-medium transition-colors duration-300 ${
-                    darkMode ? "text-amber-400" : "text-amber-600"
-                  }`}
+                  className={`font-medium transition-colors duration-300 text-amber-600 dark:text-amber-400`}
                 >
                   {progressRate}%
                 </span>
@@ -218,54 +170,34 @@ export function ExecutiveSummary({
           </div>
 
           <div
-            className={`text-center p-8 rounded-2xl border transition-colors duration-300 ${
-              darkMode
-                ? "bg-gradient-to-br from-slate-800 to-red-900/20 border-red-800/50"
-                : "bg-gradient-to-br from-red-50 to-pink-50 border-red-100"
-            }`}
+            className={`text-center p-8 rounded-2xl border transition-colors duration-300 bg-gradient-to-br from-red-50 to-pink-50 dark:from-slate-800 dark:to-red-900/20 border-red-100 dark:border-red-800/50`}
           >
             <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center mx-auto mb-4">
               <AlertTriangle className="h-8 w-8 text-white" />
             </div>
             <h3
-              className={`text-lg font-semibold mb-2 transition-colors duration-300 ${
-                darkMode ? "text-slate-100" : "text-slate-900"
-              }`}
+              className={`text-lg font-semibold mb-2 transition-colors duration-300`}
             >
               Impedimentos
             </h3>
             <p
-              className={`text-4xl font-bold mb-2 transition-colors duration-300 ${
-                darkMode ? "text-red-400" : "text-red-600"
-              }`}
+              className={`text-4xl font-bold mb-2 transition-colors duration-300 text-red-600 dark:text-red-400`}
             >
               {taskData.blocked}
             </p>
-            <p
-              className={`text-sm transition-colors duration-300 ${
-                darkMode ? "text-slate-400" : "text-slate-600"
-              }`}
-            >
+            <p className={`text-sm transition-colors duration-300`}>
               Tareas que requieren atención
             </p>
             <Separator className="my-4" />
             {taskData.blocked > 0 ? (
               <div
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ${
-                  darkMode
-                    ? "bg-red-900/50 text-red-300"
-                    : "bg-red-100 text-red-800"
-                }`}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-300 bg-red-100 dark:bg-red-900/50 text-red-800 dark:text-red-300`}
               >
                 🚨 Acción requerida
               </div>
             ) : (
               <div
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ${
-                  darkMode
-                    ? "bg-green-900/50 text-green-300"
-                    : "bg-green-100 text-green-800"
-                }`}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-300 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300`}
               >
                 ✅ Sin bloqueos
               </div>
@@ -276,34 +208,22 @@ export function ExecutiveSummary({
         <Separator className="my-8" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div
-            className={`p-4 rounded-xl border transition-colors duration-300 ${
-              darkMode
-                ? "bg-slate-800 border-slate-700"
-                : "bg-slate-50 border-slate-100"
-            }`}
+            className={`p-4 rounded-xl border transition-colors duration-300 bg-slate-50 dark:bg-slate-800 border-slate-100 dark:border-slate-700`}
           >
             <div className="flex items-center gap-2 mb-2">
               <div className="h-2 w-2 rounded-full bg-indigo-500"></div>
               <span
-                className={`text-sm font-medium transition-colors duration-300 ${
-                  darkMode ? "text-slate-300" : "text-slate-700"
-                }`}
+                className={`text-sm font-medium transition-colors duration-300`}
               >
                 Pendientes
               </span>
             </div>
             <div
-              className={`text-2xl font-bold transition-colors duration-300 ${
-                darkMode ? "text-slate-100" : "text-slate-900"
-              }`}
+              className={`text-2xl font-bold transition-colors duration-300`}
             >
               {pendingTasks}
             </div>
-            <div
-              className={`text-xs mt-1 transition-colors duration-300 ${
-                darkMode ? "text-slate-500" : "text-slate-500"
-              }`}
-            >
+            <div className={`text-xs mt-1 transition-colors duration-300`}>
               {taskData.totalTasks > 0
                 ? `${((pendingTasks / taskData.totalTasks) * 100).toFixed(
                     1
@@ -313,26 +233,18 @@ export function ExecutiveSummary({
           </div>
 
           <div
-            className={`p-4 rounded-xl border transition-colors duration-300 ${
-              darkMode
-                ? "bg-slate-800 border-slate-700"
-                : "bg-slate-50 border-slate-100"
-            }`}
+            className={`p-4 rounded-xl border transition-colors duration-300 bg-slate-50 dark:bg-slate-800 border-slate-100 dark:border-slate-700`}
           >
             <div className="flex items-center gap-2 mb-2">
               <div className="h-2 w-2 rounded-full bg-purple-500"></div>
               <span
-                className={`text-sm font-medium transition-colors duration-300 ${
-                  darkMode ? "text-slate-300" : "text-slate-700"
-                }`}
+                className={`text-sm font-medium transition-colors duration-300`}
               >
                 Eficiencia
               </span>
             </div>
             <div
-              className={`text-2xl font-bold transition-colors duration-300 ${
-                darkMode ? "text-slate-100" : "text-slate-900"
-              }`}
+              className={`text-2xl font-bold transition-colors duration-300`}
             >
               {taskData.totalTasks > 0
                 ? Math.round(
@@ -345,36 +257,24 @@ export function ExecutiveSummary({
                 : 0}
               %
             </div>
-            <div
-              className={`text-xs mt-1 transition-colors duration-300 ${
-                darkMode ? "text-slate-500" : "text-slate-500"
-              }`}
-            >
+            <div className={`text-xs mt-1 transition-colors duration-300`}>
               Ratio de completado
             </div>
           </div>
 
           <div
-            className={`p-4 rounded-xl border transition-colors duration-300 ${
-              darkMode
-                ? "bg-slate-800 border-slate-700"
-                : "bg-slate-50 border-slate-100"
-            }`}
+            className={`p-4 rounded-xl border transition-colors duration-300 bg-slate-50 dark:bg-slate-800 border-slate-100 dark:border-slate-700`}
           >
             <div className="flex items-center gap-2 mb-2">
               <div className="h-2 w-2 rounded-full bg-teal-500"></div>
               <span
-                className={`text-sm font-medium transition-colors duration-300 ${
-                  darkMode ? "text-slate-300" : "text-slate-700"
-                }`}
+                className={`text-sm font-medium transition-colors duration-300`}
               >
                 Velocidad
               </span>
             </div>
             <div
-              className={`text-2xl font-bold transition-colors duration-300 ${
-                darkMode ? "text-slate-100" : "text-slate-900"
-              }`}
+              className={`text-2xl font-bold transition-colors duration-300`}
             >
               {taskData.inProgress > 0
                 ? Math.round((taskData.completed / taskData.inProgress) * 10) /
@@ -382,36 +282,24 @@ export function ExecutiveSummary({
                 : 0}
               x
             </div>
-            <div
-              className={`text-xs mt-1 transition-colors duration-300 ${
-                darkMode ? "text-slate-500" : "text-slate-500"
-              }`}
-            >
+            <div className={`text-xs mt-1 transition-colors duration-300`}>
               Completadas vs activas
             </div>
           </div>
 
           <div
-            className={`p-4 rounded-xl border transition-colors duration-300 ${
-              darkMode
-                ? "bg-slate-800 border-slate-700"
-                : "bg-slate-50 border-slate-100"
-            }`}
+            className={`p-4 rounded-xl border transition-colors duration-300 bg-slate-50 dark:bg-slate-800 border-slate-100 dark:border-slate-700`}
           >
             <div className="flex items-center gap-2 mb-2">
               <div className="h-2 w-2 rounded-full bg-rose-500"></div>
               <span
-                className={`text-sm font-medium transition-colors duration-300 ${
-                  darkMode ? "text-slate-300" : "text-slate-700"
-                }`}
+                className={`text-sm font-medium transition-colors duration-300`}
               >
                 Riesgo
               </span>
             </div>
             <div
-              className={`text-2xl font-bold transition-colors duration-300 ${
-                darkMode ? "text-slate-100" : "text-slate-900"
-              }`}
+              className={`text-2xl font-bold transition-colors duration-300`}
             >
               {taskData.totalTasks > 0
                 ? taskData.blocked > taskData.completed * 0.2
@@ -421,11 +309,7 @@ export function ExecutiveSummary({
                   : "Bajo"
                 : "N/A"}
             </div>
-            <div
-              className={`text-xs mt-1 transition-colors duration-300 ${
-                darkMode ? "text-slate-500" : "text-slate-500"
-              }`}
-            >
+            <div className={`text-xs mt-1 transition-colors duration-300`}>
               Nivel de bloqueos
             </div>
           </div>

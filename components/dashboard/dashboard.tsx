@@ -9,7 +9,6 @@ import { ExecutiveSummary } from "./executive-summary"
 import { TaskData } from "@/lib/types"
 
 export function Dashboard() {
-  const [darkMode, setDarkMode] = useState(false)
   const [taskData, setTaskData] = useState<TaskData>({
     totalTasks: 0,
     inProgress: 0,
@@ -33,10 +32,6 @@ export function Dashboard() {
     }
   }
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-  }
-
   const handleReset = () => {
     setTaskData({
       totalTasks: 0,
@@ -48,31 +43,17 @@ export function Dashboard() {
   }
 
   return (
-    <div
-      className={`min-h-screen transition-colors duration-300 ${
-        darkMode
-          ? "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
-          : "bg-gradient-to-br from-slate-50 via-white to-slate-50"
-      }`}
-    >
-      <Header
-        darkMode={darkMode}
-        onToggleDarkMode={toggleDarkMode}
-        onReset={handleReset}
-      />
+    <div className="min-h-screen transition-colors duration-300">
+      <Header onReset={handleReset} />
 
-      <div className="mx-auto px-6 py-8 space-y-8">
-        <MetricsForm
-          darkMode={darkMode}
-          taskData={taskData}
-          onInputChange={handleInputChange}
-        />
+      <div className="mx-auto px-6 py-6 space-y-8">
+        <MetricsForm taskData={taskData} onInputChange={handleInputChange} />
 
-        <MetricsGrid darkMode={darkMode} taskData={taskData} />
+        <MetricsGrid taskData={taskData} />
 
-        <ChartsGrid darkMode={darkMode} taskData={taskData} />
+        <ChartsGrid taskData={taskData} />
 
-        <ExecutiveSummary darkMode={darkMode} taskData={taskData} />
+        <ExecutiveSummary taskData={taskData} />
       </div>
     </div>
   )

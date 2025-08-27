@@ -6,7 +6,6 @@ import { Progress } from "@/components/ui/progress"
 import { LucideIcon } from "lucide-react"
 
 interface MetricCardProps {
-  darkMode: boolean
   title: string
   value: string | number
   icon: LucideIcon
@@ -26,7 +25,6 @@ interface MetricCardProps {
 }
 
 export function MetricCard({
-  darkMode,
   title,
   value,
   icon: Icon,
@@ -39,35 +37,19 @@ export function MetricCard({
 }: MetricCardProps) {
   return (
     <Card
-      className={`shadow-sm hover:shadow-md transition-all duration-300 group ${className} ${
-        darkMode
-          ? "border-slate-700/60 bg-gradient-to-br from-slate-800 to-slate-900"
-          : "border-slate-200/60 bg-gradient-to-br from-white to-slate-50"
-      }`}
+      className={`shadow-sm hover:shadow-md transition-all duration-300 group ${className}`}
     >
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <p
-              className={`text-sm font-medium transition-colors duration-300 ${
-                darkMode ? "text-slate-400" : "text-slate-600"
-              }`}
-            >
+            <p className={`text-sm font-medium transition-colors duration-300`}>
               {title}
             </p>
-            <p
-              className={`text-3xl font-bold transition-colors duration-300 ${
-                darkMode ? "text-slate-100" : "text-slate-900"
-              }`}
-            >
+            <p className={`text-3xl font-bold transition-colors duration-300`}>
               {value}
             </p>
             {subtitle && (
-              <p
-                className={`text-sm transition-colors duration-300 ${
-                  darkMode ? "text-slate-400" : "text-slate-600"
-                }`}
-              >
+              <p className={`text-sm transition-colors duration-300`}>
                 {subtitle}
               </p>
             )}
@@ -91,31 +73,25 @@ export function MetricCard({
           </div>
         </div>
 
-        {progress && (
+        {/* {progress && (
           <div className="mt-4">
             {progress.showBar && (
               <Progress value={progress.value} className="h-2" />
             )}
           </div>
-        )}
+        )} */}
 
-        {warning && (
+        {/* {warning && (
           <div
-            className={`mt-4 p-2 rounded-lg border transition-colors duration-300 ${
-              darkMode
-                ? "bg-red-900/30 border-red-800/50"
-                : "bg-red-50 border-red-100"
-            }`}
+            className={`mt-4 p-2 rounded-lg border transition-colors duration-300 bg-red-50 border-red-100`}
           >
             <p
-              className={`text-xs font-medium transition-colors duration-300 ${
-                darkMode ? "text-red-300" : "text-red-700"
-              }`}
+              className={`text-xs font-medium transition-colors duration-300 text-red-700`}
             >
               ⚠️ {warning}
             </p>
           </div>
-        )}
+        )} */}
       </CardContent>
     </Card>
   )
