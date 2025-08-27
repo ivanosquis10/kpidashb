@@ -165,12 +165,12 @@ export function SaveDataModal({
             <Button onClick={handleSave} disabled={!name.trim() || isSaving}>
               {isSaving ? (
                 <>
-                  <Clock className="h-4 w-4 mr-2 animate-spin" />
+                  <Clock className="h-4 w-4 animate-spin" />
                   Guardando...
                 </>
               ) : (
                 <>
-                  <Save className="h-4 w-4 mr-2" />
+                  <Save className="h-4 w-4" />
                   Guardar
                 </>
               )}

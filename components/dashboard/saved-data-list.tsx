@@ -101,7 +101,7 @@ export function SavedDataList({
               <Database className="h-6 w-6 text-green-600" />
             </div>
             <div>
-              <DrawerTitle>Datos Guardados</DrawerTitle>
+              <DrawerTitle className="text-left">Datos Guardados</DrawerTitle>
               <DrawerDescription>
                 {savedDataList.length} configuración
                 {savedDataList.length !== 1 ? "es" : ""} disponible

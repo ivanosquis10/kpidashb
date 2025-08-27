@@ -40,7 +40,7 @@ export function MetricsForm({
       className={`shadow-sm backdrop-blur-sm transition-colors duration-300`}
     >
       <CardHeader className="pb-6">
-        <div className="flex items-center justify-between">
+        <div className="flex gap-4 md:items-center md:justify-between flex-col md:flex-row">
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-lg bg-indigo-100 flex items-center justify-center">
               <Target className="h-6 w-6 text-indigo-600" />
@@ -55,17 +55,9 @@ export function MetricsForm({
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Badge
-              variant="secondary"
-              className={`transition-colors duration-300 `}
-            >
-              <Users className="h-3 w-3 mr-1" />
-              Equipo activo
-            </Badge>
-
             {hasDataToSave && (
               <Button size="sm" onClick={() => onSaveData("")} className="h-8">
-                <Save className="h-3 w-3 mr-1" />
+                <Save className="h-3 w-3" />
                 Guardar
               </Button>
             )}
