@@ -4,41 +4,13 @@ import { BarChart } from "./bar-chart"
 import { PieChart } from "./pie-chart"
 import { AreaChart } from "./area-chart"
 import { TaskData } from "@/lib/types"
+import { ChartPieLabelList } from "./chart-pie-label-list"
 
 interface ChartsGridProps {
   taskData: TaskData
 }
 
 export function ChartsGrid({ taskData }: ChartsGridProps) {
-  const chartData = [
-    {
-      name: "Por Hacer",
-      value: Math.max(
-        0,
-        taskData.totalTasks -
-          taskData.inProgress -
-          taskData.blocked -
-          taskData.completed
-      ),
-      color: "#6366f1",
-    },
-    {
-      name: "En Progreso",
-      value: taskData.inProgress,
-      color: "#f59e0b",
-    },
-    {
-      name: "Bloqueadas",
-      value: taskData.blocked,
-      color: "#ef4444",
-    },
-    {
-      name: "Completadas",
-      value: taskData.completed,
-      color: "#10b981",
-    },
-  ]
-
   const barChartData = [
     {
       stage: "Por Hacer",
@@ -99,8 +71,9 @@ export function ChartsGrid({ taskData }: ChartsGridProps) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <BarChart data={barChartData} />
-      <PieChart data={chartData} />
-      <AreaChart data={trendData} />
+      <ChartPieLabelList taskData={taskData} />
+      {/* <PieChart data={chartData} /> */}
+      {/* <AreaChart data={trendData} /> */}
     </div>
   )
 }
