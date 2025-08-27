@@ -1,9 +1,7 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { BarChart3, Calendar, Moon, Sun, Target } from "lucide-react"
-import { useTheme } from "next-themes"
+import { BarChart3, Target } from "lucide-react"
 import { ModeSwitcher } from "../themes-swticher"
 
 interface HeaderProps {
@@ -11,14 +9,12 @@ interface HeaderProps {
 }
 
 export function Header({ onReset }: HeaderProps) {
-  const { setTheme } = useTheme()
-
   return (
     <div className="">
-      <div className="mx-auto px-6 py-6 lg:py-3">
-        <div className="flex items-center justify-between">
+      <div className="mx-auto px-6 py-3">
+        <div className="md:flex md:items-center md:justify-between space-y-4 md:space-y-0">
           <div className="space-y-1">
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-3">
               <div className="flex items-center justify-center rounded-xl  border p-1">
                 <img
                   src="/logo.png"
